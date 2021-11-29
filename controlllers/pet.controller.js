@@ -1,4 +1,4 @@
-const Pet = require('../models/Pets.model')
+const Pet = require('../models/Pet.model')
 
 module.exports.petController = {
   addPet: async (req, res) => {

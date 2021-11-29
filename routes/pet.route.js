@@ -3,10 +3,10 @@ const {petController} = require('../controlllers/pet.controller')
 
 const router = Router()
 
-router.get('/pets', petController.getPets)
-router.get('/pets/:id', petController.getPetById)
+router.get('/', petController.getPets)
+router.get('/:id', petController.getPetById)
 router.post('/add', petController.addPet)
-router.patch('/pets/:id', petController.editPet)
-router.delete('/pets/:id', petController.removePet)
+router.patch('/:id', petController.editPet)
+router.delete('/remove/:id', petController.removePet)
 
 module.exports = router
