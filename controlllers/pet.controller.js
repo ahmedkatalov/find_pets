@@ -40,6 +40,15 @@ module.exports.petController = {
   removePet: async (req, res) => {
     try{
       await Pet.findByIdAndRemove(req.params.id)
+      res.json("Успешно удален")
+    }catch (e) {
+      res.json(e)
+    }
+  },
+  getPetById: async (req, res) => {
+    try{
+      const pet = Pet.findById(req.params.id)
+      res.json(pet)
     }catch (e) {
       res.json(e)
     }
