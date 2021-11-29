@@ -1,5 +1,4 @@
 const Pet = require('../models/Pets.model')
-const mongoose = require('mongoose');
 
 module.exports.petController = {
   addPet: async (req, res) => {
@@ -38,5 +37,11 @@ module.exports.petController = {
       res.json(e)
     }
   },
-  removePet: async
+  removePet: async (req, res) => {
+    try{
+      await Pet.findByIdAndRemove(req.params.id)
+    }catch (e) {
+      res.json(e)
+    }
+  }
 }
