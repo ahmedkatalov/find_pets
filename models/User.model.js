@@ -17,9 +17,11 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    cards: [{
-        type: String
+    pets: [{
+        ref: "Pet",
+        type: mongoose.Schema.Types.ObjectId
     }]
+
 })
 
 const User = mongoose.model("User", userSchema)
