@@ -5,11 +5,11 @@ const petsSchema = mongoose.Schema({
     header: String,
     description: String,
     user: {
-        ref: "Pet",
+        ref: "User",
         type: mongoose.Schema.Types.ObjectId
     },
     category: {
-        ref: "Pet",
+        ref: "Category",
         type: mongoose.Schema.Types.ObjectId
     }
 })

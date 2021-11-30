@@ -4,6 +4,10 @@ const categorySchema = mongoose.Schema({
     name: {
         type: String,
         required: true
+    },
+    description:{
+        type: String,
+        default: "Im title, click here me"
     }
 })
 
