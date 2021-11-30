@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken")
 module.exports.petController = {
   addPet: async (req, res) => {
     try {
-    const {img, header, description, category} = req.body
+    const {header, description, category} = req.body
     const {authorization} = req.headers
 
     const [type, token] = authorization.split(" ")
@@ -16,11 +16,11 @@ module.exports.petController = {
       const payload = await jwt.verify(token, process.env.SECRET_JWT_KEY)
 
       const pet = await Pet.create({
-        img: img,
         header: header,
         description: description,
         user: payload.id,
-        category: category
+        category: category,
+        img: req.file.path
       })
       res.json(pet)
     }catch (e) {
@@ -41,12 +41,14 @@ module.exports.petController = {
 
     try {
       const pet = await Pet.findByIdAndUpdate(req.params.id,{
-        img: img,
         header: header,
         description: description,
         user: user,
         category: category
       })
+      if (req.file){
+        pet.img = req.file.path
+      }
       res.json(pet)
     }catch (e) {
       res.json(e)
