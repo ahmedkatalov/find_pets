@@ -5,7 +5,7 @@ const router = Router()
 
 router.get('/', petController.getPets)
 router.get('/:id', petController.getPetById)
-router.post('/', petController.addPet)
+router.post('/add', petController.addPet)
 router.patch('/:id', petController.editPet)
 router.delete('/:id', petController.removePet)
 
