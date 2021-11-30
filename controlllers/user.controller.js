@@ -70,7 +70,7 @@ module.exports.userController = {
     },
     getUsers: async (req,res) => {
         try{
-            const users = User.find()
+            const users = await User.find()
             res.json(users)
         } catch (e) {
             res.json()
