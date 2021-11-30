@@ -7,6 +7,6 @@ router.get('/', petController.getPets)
 router.get('/:id', petController.getPetById)
 router.post('/add', petController.addPet)
 router.patch('/:id', petController.editPet)
-router.delete('/:id', petController.removePet)
+router.delete('/remove/:id', petController.removePet)
 
 module.exports = router
