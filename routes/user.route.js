@@ -7,6 +7,7 @@ const router = Router()
 router.post("/add", userController.addUser)
 router.delete("/delete", userController.removeUser)
 router.get("/", userController.getUsers)
-router.get("/login", userController.login)
+router.post("/login", userController.login)
+router.get("/profile", userController.getUserById)
 
 module.exports = router

@@ -6,10 +6,11 @@ const jwt = require("jsonwebtoken")
 module.exports.userController = {
     addUser: async (req, res) => {
         try{
-
-            const  {firstName,lastName,mail,phone,pets, login, password} = req.body
-
-            const hash = await bcrypt.hash(password, process.env.BCRYPT_ROUND)
+            const {firstName,lastName,mail,phone,pets, login, password} = req.body
+            if(await User.findOne({login})){
+                return res.status(401).json({error:"такой login или mail занят"})
+            }
+            const hash = await bcrypt.hash(password, Number(process.env.BCRYPT_ROUND))
 
             const newUser = await User.create({
                 login: login,
@@ -20,10 +21,9 @@ module.exports.userController = {
                 phone: phone,
                 pets: pets
             })
-
             res.json(newUser)
         } catch (e) {
-            res.json(e)
+            res.status(400).json({error: "ошибка при регистрации" + e})
         }
     },
     login: async (req, res) => {
@@ -33,17 +33,19 @@ module.exports.userController = {
             const candidate = await User.findOne({login: login})
 
             if(!candidate){
-                res.status(401).json("Неправильный логин")
+                res.status(401).json({error: "Неправильный логин"})
             }
 
             const valid = await bcrypt.compare(password, candidate.password)
 
             if(!valid){
-                res.status(401).json("Неправильный пароль")
+                res.status(401).json({error: "Неправильный пароль"})
             }
 
             const payload = {
+                name: candidate.firstName + candidate.lastName,
                 id: candidate._id,
+                pets: candidate.pets,
                 login: candidate.login
             }
 
@@ -54,7 +56,7 @@ module.exports.userController = {
             res.json(token)
 
         }catch (e) {
-            res.json(e)
+            res.json({error:"Ошибка при авторизации"})
         }
     },
 
@@ -75,10 +77,15 @@ module.exports.userController = {
         } catch (e) {
             res.json()
         }
+    },
+    getUserById: async (req, res)=>{
+        const {id} = req.headers
+        try {
+            const user = await User.findById(id)
+        } catch (e) {
+            res.json({error: "Ошибка получения данных"})
+        }
     }
-
-
-
 
 }
 

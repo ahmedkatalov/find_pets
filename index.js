@@ -11,7 +11,7 @@ app.use(cors())
 app.use(require('./routes'))
 app.use('/uploads', express.static('uploads'))
 
-mongoose.connect(process.env.MONGO_SERVER)
+mongoose.connect(process.env.MONGO_SERVER, )
     .then(()=>{
         console.log("Mongo connect")
         app.listen(port, ()=>{
