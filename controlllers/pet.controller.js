@@ -14,17 +14,19 @@ module.exports.petController = {
       return res.status(401).json("Неверный тип токена" + token)
     }
       const payload = await jwt.verify(token, process.env.SECRET_JWT_KEY)
-
       const pet = await Pet.create({
         header: header,
         description: description,
         user: payload.id,
         category: category,
-        img: req.file.path
+        img: req.file
       })
+      if (req.file){
+        pet.img = req.file
+      }
       res.json(pet)
     }catch (e) {
-      res.status(401).json("123  " + e)
+      res.json({error: "Заполните все поля" + e + req.file})
     }
   },
   getPets: async (req, res) => {
