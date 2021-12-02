@@ -19,10 +19,10 @@ module.exports.petController = {
         description: description,
         user: payload.id,
         category: category,
-        img: req.file
+        img: req.file.path
       })
       if (req.file){
-        pet.img = req.file
+        pet.img = req.file.path
       }
       res.json(pet)
     }catch (e) {
