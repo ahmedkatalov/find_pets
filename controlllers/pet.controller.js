@@ -5,16 +5,15 @@ const jwt = require("jsonwebtoken")
 module.exports.petController = {
   addPet: async (req, res) => {
     try {
-    const {header, description, category, img} = req.body
-    // const {authorization} = req.headers
+    const {header, description, category} = req.body
+    const {authorization} = req.headers
 
-    // const [type, token] = authorization.split(" ")
-    //
-    // if (type !=="Bearer"){
-    //   return res.status(401).json("Неверный тип токена" + token)
-    // }
-    //   const payload = await jwt.verify(token, process.env.SECRET_JWT_KEY)
-    console.log(header, description, category, img);
+    const [type, token] = authorization.split(" ")
+
+    if (type !=="Bearer"){
+      return res.status(401).json("Неверный тип токена" + token)
+    }
+      const payload = await jwt.verify(token, process.env.SECRET_JWT_KEY)
       const pet = await Pet.create({
         header: header,
         description: description,
@@ -27,7 +26,7 @@ module.exports.petController = {
       }
       res.json(pet)
     }catch (e) {
-      res.json("123  " + e)
+      res.json({error: "Заполните все поля"})
     }
   },
   getPets: async (req, res) => {
