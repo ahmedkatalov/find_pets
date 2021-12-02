@@ -17,16 +17,16 @@ module.exports.petController = {
       const pet = await Pet.create({
         header: header,
         description: description,
-        user: req.body.user,
+        user: payload.id,
         category: category,
-        img: req.file.path
+        img: req.file
       })
       if (req.file){
-        pet.img = req.file.path
+        pet.img = req.file
       }
       res.json(pet)
     }catch (e) {
-      res.json({error: "Заполните все поля"})
+      res.json({error: "Заполните все поля" + e + req.file})
     }
   },
   getPets: async (req, res) => {

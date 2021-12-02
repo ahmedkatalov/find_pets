@@ -96,7 +96,7 @@ module.exports.userController = {
 
             res.json(user)
         } catch (e) {
-            res.status(401).json({error: "Ошибка получения данных"})
+            res.status(401).json({error: "Ошибка получения данных" })
         }
     }
 
