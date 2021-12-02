@@ -43,7 +43,10 @@ module.exports.userController = {
             }
 
             const payload = {
-                name: candidate.firstName + candidate.lastName,
+                firstName: candidate.firstName,
+                lastName: candidate.lastName,
+                phone: candidate.phone,
+                mail: candidate.map,
                 id: candidate._id,
                 pets: candidate.pets,
                 login: candidate.login
@@ -54,7 +57,6 @@ module.exports.userController = {
             })
 
             res.json(token)
-
         }catch (e) {
             res.json({error:"Ошибка при авторизации"})
         }
@@ -79,11 +81,22 @@ module.exports.userController = {
         }
     },
     getUserById: async (req, res)=>{
-        const {id} = req.headers
+        const {authorization} = req.headers
         try {
-            const user = await User.findById(id)
+
+            const [type, token] = authorization.split(" ")
+
+            if (type !=="Bearer"){
+                return res.status(401).json("Неверный тип токена" + token)
+            }
+
+            const payload = await jwt.verify(token, process.env.SECRET_JWT_KEY)
+
+            const user = await User.findById(payload.id)
+
+            res.json(user)
         } catch (e) {
-            res.json({error: "Ошибка получения данных"})
+            res.status(401).json({error: "Ошибка получения данных"})
         }
     }
 
