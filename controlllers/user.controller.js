@@ -23,7 +23,7 @@ module.exports.userController = {
             })
             res.json(newUser)
         } catch (e) {
-            res.status(400).json({error: "ошибка при регистрации" + e})
+            res.status(400).json({error: "Заполните все поля"})
         }
     },
     login: async (req, res) => {
