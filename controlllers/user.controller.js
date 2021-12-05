@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken")
 module.exports.userController = {
     addUser: async (req, res) => {
         try{
-            const {firstName,lastName,mail,phone,pets, login, password} = req.body
+            const {firstName,lastName,mail,phone, login, password} = req.body
             if(await User.findOne({login})){
                 return res.status(401).json({error:"такой login или mail занят"})
             }
@@ -19,7 +19,6 @@ module.exports.userController = {
                 lastName: lastName,
                 mail: mail,
                 phone: phone,
-                pets: pets
             })
             res.json(newUser)
         } catch (e) {

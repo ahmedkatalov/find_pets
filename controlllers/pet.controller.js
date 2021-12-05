@@ -1,4 +1,5 @@
 const Pet = require('../models/Pet.model')
+const User = require("../models/User.model")
 const jwt = require("jsonwebtoken")
 
 
@@ -14,6 +15,7 @@ module.exports.petController = {
       return res.status(401).json("Неверный тип токена" + token)
     }
       const payload = await jwt.verify(token, process.env.SECRET_JWT_KEY)
+
       const pet = await Pet.create({
         header: header,
         description: description,
@@ -21,6 +23,7 @@ module.exports.petController = {
         category: category,
         img: req.file.path
       })
+
       if (req.file){
         pet.img = req.file.path
       }
