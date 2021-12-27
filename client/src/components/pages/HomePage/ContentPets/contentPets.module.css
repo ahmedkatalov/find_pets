@@ -1,0 +1,13 @@
+.cardContent {
+  transition: 0.3s ease-in-out;
+  border-radius: 5px;
+}
+.cardContent:hover {
+  box-shadow: 4px 4px 21px 4px rgba(87, 90, 92, 0.25);
+  transform: scale(1.02);
+}
+.cardImg {
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+}

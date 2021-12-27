@@ -1,0 +1,7 @@
+.stick {
+  height: 200px;
+}
+
+.shadowSt {
+  box-shadow: 4px 4px 50px 3px rgba(76, 223, 41, 0.2);
+}
