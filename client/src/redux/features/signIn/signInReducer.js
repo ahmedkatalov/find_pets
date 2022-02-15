@@ -85,13 +85,6 @@ export const auth = (userDate) => {
   }
 }
 
-// export const uploadUserDate = () => {
-//   console.log(localStorage.getItem("token"));
-//   return (dispatch) => {
-//
-//   }
-// }
-
 export const exitInAccount = () => {
   return (dispatch) => {
     localStorage.removeItem('token')

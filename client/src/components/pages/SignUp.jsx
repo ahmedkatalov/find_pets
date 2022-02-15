@@ -1,10 +1,9 @@
 import './style.css'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { createUser } from '../../redux/features/signUpReducer'
+import { createUser } from '../../redux/features/signUp/signUpFunc'
 
 const SignUp = () => {
-  // const isFulfilled = useSelector((state) => state.signUp.isFulfilled)
 
   const error = useSelector((state) => state.signUp.error)
 
@@ -19,10 +18,6 @@ const SignUp = () => {
   })
 
   const dispatch = useDispatch()
-
-  // const navigate = useNavigate()
-
-  // {isFulfilled && navigate('/login')}
 
   const handleNewUser = {
     login: (login) => {

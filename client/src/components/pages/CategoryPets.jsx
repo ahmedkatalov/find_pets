@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router"
 import { Link } from "react-router-dom"
-import {fetchPets, removeCardPet} from "../../redux/features/petsReducer"
+import {fetchPets, removeCardPet} from "../../redux/features/pets/petsFunc"
 
 const CategoryPets = () => {
   const pets = useSelector((state) => state.pets.pets.reverse())

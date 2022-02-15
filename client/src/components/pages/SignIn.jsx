@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { auth } from '../../redux/features/signInReducer'
+import { auth } from '../../redux/features/signIn/signInFunc'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 const SignIn = () => {
   const [personalData, setPersonalData] = useState({})
-
-  // const isFulfilled = useSelector((state) => state.signUp.isFulfilled)
 
   const dispatch = useDispatch()
 

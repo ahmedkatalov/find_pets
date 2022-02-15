@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import {fetchPets, removeCardPet} from "../../redux/features/petsReducer"
+import {fetchPets, removeCardPet} from "../../redux/features/pets/petsFunc"
 
 const Pets = () => {
   const dispatch = useDispatch()
