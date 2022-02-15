@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
-import { fetchContentPets } from "../../../../redux/features/petsReducer"
+import { fetchContentPets } from "../../../../redux/features/pets/petsFunc"
 import cl from "./contentPets.module.css"
 
 const ContentPets = ({pets}) => {

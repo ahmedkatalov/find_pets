@@ -1,10 +1,10 @@
 import { applyMiddleware, createStore, combineReducers } from "redux";
 import { createLogger } from "redux-logger/src";
 import thunk from "redux-thunk";
-import { categoriesReducer } from './features/categoriesReducer';
-import { petsReducer } from './features/petsReducer';
-import { signInReducer } from './features/signInReducer';
-import { signUpReducer } from './features/signUpReducer';
+import { categoriesReducer } from './features/categories/categoriesReducer';
+import { petsReducer } from './features/pets/petsReducer';
+import { signInReducer } from './features/signIn/signInReducer';
+import { signUpReducer } from './features/signUp/signUpReducer';
 
 const rootReducer = combineReducers({
     categories: categoriesReducer,

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { uploadPets } from "../../redux/features/petsReducer"
+import { uploadPets } from "../../redux/features/pets/petsFunc"
 
 const FormAddPet = () => {
   const [header, setHeader] = useState(null)

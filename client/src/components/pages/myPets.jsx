@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import {fetchPets, removeCardPet} from "../../redux/features/petsReducer"
+import {fetchPets, removeCardPet} from "../../redux/features/pets/petsFunc"
 
 const Pets = () => {
     const dispatch = useDispatch()
@@ -47,8 +47,8 @@ const Pets = () => {
                                             className="btn btn-danger w-40 fs-4 mt-4"
                                             onClick={()=>handleRemoveCard(pet._id)}
                                         >
-                      Удалить
-                  </span>
+                                            Удалить
+                                        </span>
                                     </div>:
                                     <Link
                                         to={`/pet/${pet._id}`}

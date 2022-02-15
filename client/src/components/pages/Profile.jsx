@@ -1,20 +1,15 @@
-import React, {useEffect, useState} from 'react'
-import {exitInAccount, uploadUserDate} from "../../redux/features/signInReducer";
-import {useDispatch, useSelector} from "react-redux";
+import React from 'react'
+import {exitInAccount} from "../../redux/features/signIn/signInFunc";
+import {useDispatch} from "react-redux";
 import {NavLink} from "react-router-dom";
 
 const Profile = ( {token, userDate}) => {
 
   const dispatch = useDispatch()
 
-  // const token = useSelector(state => state.signIn.token)
-  //
-  // const userDate = useSelector(state => state.signIn.userDate)
-
   const handleExit = () => {
     dispatch(exitInAccount())
   }
-//asdadasd
   return (
       <div
           className="offcanvas offcanvas-end"
