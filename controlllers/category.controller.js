@@ -32,16 +32,18 @@ module.exports.categoriesController = {
       res.json(e);
     }
   },
-
+  
   editCategory: async (req, res) => {
     try {
       await Category.findByIdAndUpdate(req.params.id, {
         $set: req.body,
       });
-
+      
       res.json("Категория изменена");
     } catch (e) {
       res.json(e);
     }
   },
 };
+
+console.log("z")
